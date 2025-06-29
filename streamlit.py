@@ -10,7 +10,7 @@ st.write("This app predicts if a passenger would survive the Titanic disaster ba
 # Load dataset automatically
 @st.cache_data
 def load_data():
-    df = pd.read_csv("C:\Users\HP\Desktop\DATA SCIENCE\Assignments\Logistic Regression\STREAMLIT\Titanic_train.csv")  # Make sure this file is in the same folder
+    df = pd.read_csv("C:\\Users\\HP\\Desktop\\DATA SCIENCE\\Assignments\\Logistic Regression\\STREAMLIT\\Titanic_train.csv")  # Make sure this file is in the same folder
     return df
 
 train_df = load_data()
