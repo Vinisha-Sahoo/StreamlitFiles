@@ -27,6 +27,11 @@ model = LogisticRegression()
 model.fit(X_train, y_train)
 st.success("Model is preloaded and trained successfully!")
 
+
+train_preds = model.predict(X_train)
+train_accuracy = accuracy_score(y_train, train_preds)
+st.info(f"Training Accuracy of the Logistic Regression model: {train_accuracy:.2f}")
+
 # Sidebar for user to simulate test passenger
 st.sidebar.header("Enter Passenger Details")
 pclass = st.sidebar.selectbox("Passenger Class (1 = 1st, 2 = 2nd, 3 = 3rd)", [1, 2, 3])
