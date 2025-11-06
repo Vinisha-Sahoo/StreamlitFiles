@@ -1,102 +1,59 @@
-🚢 Titanic Survival Prediction
+# 🚢 Titanic Survival Prediction using Logistic Regression
 
-This project predicts the survival probability of passengers aboard the Titanic using a machine learning model, specifically logistic regression.
-It involves data exploration, preprocessing, model building, evaluation, and deployment using Streamlit.
+This project aims to predict the survival of passengers aboard the Titanic using **Logistic Regression**, a supervised machine learning algorithm suitable for binary classification problems.  
+It involves complete steps from data exploration and preprocessing to model training, evaluation, and deployment using **Streamlit**.
 
-
-1. Data Exploration
-
-
-Loaded the Titanic dataset and performed exploratory data analysis (EDA).
-
-Examined feature types, summary statistics, and missing values.
-
-Created visualizations such as:
-
-Histograms for numerical features (Age, Fare, etc.)
-
-Count plots for categorical features (Sex, Embarked, Pclass)
-
-Correlation heatmap to identify feature relationships
+---
 
 
-2. Data Preprocessing
+---
 
+## 🧩 1. Data Exploration (EDA)
 
-Handled missing values:
+- Loaded the Titanic dataset and explored its structure.
+- Analyzed feature types, summary statistics, and missing values.
+- Visualized data using:
+  - **Histograms** to show age, fare, and class distributions.
+  - **Count plots** for categorical variables like `Sex`, `Embarked`, and `Pclass`.
+  - **Correlation heatmap** to examine relationships between numerical features.
 
-Imputed missing Age with median.
+### 🔍 Insights:
+- **Women and children** had higher survival rates.
+- **1st class passengers** were more likely to survive than those in 2nd or 3rd class.
+- **Age** and **Fare** showed moderate correlation with survival.
 
-Filled missing Embarked with mode.
+---
 
-Encoded categorical variables:
+## 🧹 2. Data Preprocessing
 
-Used one-hot encoding for Sex and Embarked.
+Steps performed before model training:
 
-Feature scaling was applied when necessary for logistic regression.
+1. **Handling Missing Values**  
+   - Replaced missing `Age` values with the median.  
+   - Filled missing `Embarked` values with the mode.
 
+2. **Encoding Categorical Variables**  
+   - Converted categorical columns (`Sex`, `Embarked`) into numeric format using one-hot encoding.
 
-3. Model Building
-4. 
+3. **Feature Scaling (if required)**  
+   - Applied normalization for numerical stability in logistic regression.
 
-A Logistic Regression model was built using the scikit-learn library.
+---
 
-Steps followed:
+## 🤖 3. Model Building (Logistic Regression)
 
-Defined features: Pclass, Sex, Age, SibSp, Parch, Fare, Embarked.
+The **Logistic Regression** model was built using **scikit-learn**.
 
-Encoded categorical variables.
+### Steps:
+1. Selected features:
+['Pclass', 'Sex', 'Age', 'SibSp', 'Parch', 'Fare', 'Embarked']
 
-Split the data into training and testing sets (80–20).
+2. Encoded categorical features.
+3. Split dataset into training and testing sets (80% - 20%).
+4. Trained the Logistic Regression model:
+```python
+from sklearn.linear_model import LogisticRegression
 
-Trained the Logistic Regression model using the training data.
+logreg = LogisticRegression(max_iter=1000)
+logreg.fit(X_train, y_train)
 
-
-
-4..Model Evaluation
-
-Metrics used:
-
-Accuracy
-
-Precision
-
-Recall
-
-F1-score
-
-ROC-AUC Score
-
-Visualization:
-
-ROC curve plotted for logistic regression.
-
-
-5. Interpretation
-
-The coefficients of the Logistic Regression model were analysed to interpret feature importance.
-
-Key Influential Features:
-
-Sex_female → strong positive effect on survival.
-
-Pclass and Age → negative effect (lower class and older age decreased survival odds).
-
-These insights helped understand which passenger characteristics most influenced survival probability.
-
-
-6. Deployment with Streamlit
-
-A Streamlit web app was developed for interactive prediction.
-
-Features:
-
-Users can input passenger details (e.g., Age, Gender, Pclass, Fare, etc.).
-
-The app predicts whether the passenger would have survived (Survived / Not Survived).
-
-Deployed locally or on Streamlit Community Cloud.
-
-
-pip install -r requirements.txt
-streamlit run app.py
